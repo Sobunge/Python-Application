@@ -7,8 +7,15 @@ class Register:
 
     def enterValues(self):
         self.name = str(input("Enter Name:"))
-        self.regNo = str(input("Enter reg no:"))
         self.username = str(input("Enter Username:"))
+        print("Enter Role \n1.Student \n2.Lecture")
+        role = int(input("Role:"))
+        if role == 1:
+            self.role = 'Student'
+            self.id = str(input("Enter Reg No:"))
+        elif role == 2:
+            self.role = 'Lecture'
+            self.id = str(input("Enter Employee Id:"))
         self.password = str(input("Enter Password:"))
         self.salt = uuid.uuid4().hex
         self.hashed_password = hashlib.sha512(self.password.encode('utf-8') + self.salt.encode('utf-8')).hexdigest()
@@ -37,8 +44,10 @@ class Register:
 
     def display(self):
         print("Name:",self.name)
-        print("Reg No:",self.regNo)
+        print("Role:",self.role)
+        print("Id:",self.id)
         print("Username:",self.username)
+        print("Password:", self.hashed_password)
         print("Age:",self.age)
         print("Address:",self.address)
 

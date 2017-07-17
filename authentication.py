@@ -1,50 +1,60 @@
-import hashlib, uuid
+import sqlite
+import registration
 
-#def tryAgain(retries=0):
- #   if retries > 10:
-  #      return
-   # try:
-    #    answer = int(input('Answer:'))
-    #except:
-     #   retries += 1
-      #  tryAgain(retries)
+connecting = sqlite.connection()
+student = registration.Register()
 
-#tryAgain()
+connecting.connect()
 
+#student.enterValues()
+#connecting.insertUserValues(student.name,student.id,student.username,student.role,student.salt,
+#                            student.hashed_password,student.age,student.address)
 
-#password = 'sam'
-#salt = uuid.uuid4().hex
-#hashed_password = hashlib.sha512(password.encode('utf-8') + salt.encode('utf-8')).hexdigest()
+#connecting.conn.commit()
+student.login()
+connecting.authenticate(student.username,student.password)
+#connecting.displayValues()
 
-#password1 = str(input("Password:"))
-#salt = uuid.uuid4().hex
-#hashed_password1 = hashlib.sha512(password1.encode('utf-8') + salt.encode('utf-8')).hexdigest()
+connecting.conn.close()
 
-#if hashed_password == hashed_password1:
-  #  print("Success")
-#else:
- #   print("Fail")
+class Units:
+    def registerUnits(self):
+        self.unitName = str(input("Unit Name:"))
+        self.uniCode = str(input("Unit Code:"))
 
+    def enterMarks(self):
+        Cat1 = int(input("Cat 1 marks:"))
+        while Cat1>30 and Cat1<0:
+            Cat1 = int(input("Cat 1 marks:"))
+        self.Cat1 = (Cat1/30)*15
+        Cat2 = int(input("Cat 2 marks:"))
+        while Cat2>30 and Cat2<0:
+            Cat2 = int(input("Cat 2 marks:"))
+        self.Cat2 = (Cat2/30)*15
+        mainExam = int(input("Main Exam marks:"))
+        while mainExam>30 and mainExam<0:
+            mainExam = int(input("Main Exam marks:"))
+        self.mainExam = (mainExam/100)*70
 
+        self.totalMarks = self.Cat1 + self.Cat2 + self.mainExam
 
-#try:
- #   while attempt<max_attampts:
-  #      uname = input('Username:')
-   #     password = input('Password:')
-#
- #       if uname == 'admin' and password == 'khs9':
-  #          print('Welcom Admin')
-   #         break
-    #    else:
-     #       attempt += 1
-      #      if attempt == max_attampts:
-       #         raise RuntimeError("\n You have reached the maximum number of attempts allowed.")
-        #    else:
-         #       print('Wrong credentials. \n Try again or Press <CTRL + C> to exit \n')
-          #      continue
-#except KeyboardInterrupt:
- #   print('Terminated by the user . \n Good-bye')
+        if self.totalMarks>=70:
+            self.grade = 'A'
+        elif self.totalMarks>=60 and self.totalMarks<70:
+            self.grade = 'B'
+        elif self.totalMarks>=50 and self.totalMarks<60:
+            self.grade = 'C'
+        elif self.totalMarks>=40 and self.totalMarks<50:
+            self.grade = 'D'
+        else:
+            self.grade = 'F'
 
-#except RuntimeError as e:
- #   print('Goodbye')
+    def displayMarks(self):
+        print("Unit Name:",self.unitName)
+        print("Unit Code:",self.uniCode)
+        print("Cat 1:",self.Cat1)
+        print("Cat 2:",self.Cat2)
+        print("Main Exam:",self.mainExam)
+        print("Total Marks:",self.totalMarks)
+        print("Grade:",self.grade)
 

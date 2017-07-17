@@ -31,7 +31,10 @@ if student.answer == 1:
                                 student.age, student.address)
     #    connecting.conn.commit()
 else:
-    print('Login')
+    student.login()
+    connecting.authenticate(student.username,student.password)
+
+
 
         #connecting.insertValues(student.name, student.regNo, student.username, student.salt, student.hashed_password,
          #                       student.age, student.address)
