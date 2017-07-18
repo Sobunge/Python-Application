@@ -1,21 +1,24 @@
-import sqlite
+#import sqlite
 import registration
 
-connecting = sqlite.connection()
-student = registration.Register()
+#connecting = sqlite.connection()
+#user = registration.Register()
 
-connecting.connect()
+#connecting.connect()
 
-#student.enterValues()
-#connecting.insertUserValues(student.name,student.id,student.username,student.role,student.salt,
-#                            student.hashed_password,student.age,student.address)
+#connecting.createTable()
+
+#connecting.createTableUnits()
+#user.enterValues()
+#connecting.insertUserValues(user.name,user.id,user.username,user.role,user.salt,
+#                            user.hashed_password,user.age,user.address)
 
 #connecting.conn.commit()
-student.login()
-connecting.authenticate(student.username,student.password)
-#connecting.displayValues()
+#user.login()
+#connecting.authenticate(user.username,user.password)
 
-connecting.conn.close()
+
+#connecting.conn.close()
 
 class Units:
     def registerUnits(self):
@@ -57,4 +60,5 @@ class Units:
         print("Main Exam:",self.mainExam)
         print("Total Marks:",self.totalMarks)
         print("Grade:",self.grade)
+
 

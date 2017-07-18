@@ -1,7 +1,7 @@
 import registration
 import sqlite
 
-student = registration.Register()
+user = registration.Register()
 connecting = sqlite.connection()
 
 
@@ -14,25 +14,25 @@ connecting.connect()
 #introductory statements
 print("##########################")
 print("What do you want to do: \n1.Register \n2.Login")
-student.tryAgain()
-if student.answer == 1:
-    student.registration()
+user.tryAgain()
+if user.answer == 1:
+    user.registration()
 
-    while student.answer == 2:
+    while user.answer == 2:
         print("What do you want to do next. \n1.Try Again \n2.Exit")
-        student.tryAgain()
-        if student.answer == 1:
-            student.registration()
+        user.tryAgain()
+        if user.answer == 1:
+            user.registration()
         else:
             exit('Goodbye ...............................')
 
-    if student.answer == 1:
-        connecting.insertValues(student.name, student.regNo, student.username, student.salt, student.hashed_password,
-                                student.age, student.address)
+    if user.answer == 1:
+        connecting.insertUserValues(user.name, user.id, user.username, user.salt, user.hashed_password,
+                                user.age, user.address)
     #    connecting.conn.commit()
 else:
-    student.login()
-    connecting.authenticate(student.username,student.password)
+    user.login()
+    connecting.authenticate(user.username,user.password)
 
 
 

@@ -51,7 +51,7 @@ class connection:
         for row in self.cursor:
             name = row[0]
             username = row[1]
-            role = row[2]
+            self.role = row[2]
             salt = row[3]
             psword = row[4]
 
@@ -59,9 +59,9 @@ class connection:
             if username == uname and password == psword:
                 print("######### Success #########")
                 print('welcome',name)
-                print('Role',role)
+                print('Role',self.role)
                 break
-            else:
+            elif username != uname and password != psword:
                 print("The details you entered is incorrect.")
                 break
 
