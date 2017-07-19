@@ -42,6 +42,21 @@ class Register:
                 print("The answer you entered is neither 1 nor 2 \nTry again")
                 self.tryAgain()
 
+    def tryAgainAgain(self):
+        if self.__trials == self.__max_trials:
+            print("You have reached the maximum trials")
+            return
+        try:
+            self.answer = int(input('Answer:'))
+        except:
+            print("The answer you entered is not in the range of 1 and 8. \nTry again")
+            self.__trials += 1
+            self.tryAgainAgain()
+        else:
+            while self.answer < 1 or self.answer > 8:
+                print("The answer you entered is not in the range of 1 and 8 \nTry again")
+                self.tryAgainAgain()
+
     def display(self):
         print("Name:",self.name)
         print("Role:",self.role)

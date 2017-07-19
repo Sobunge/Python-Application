@@ -63,6 +63,7 @@ class connection:
                 break
             elif username != uname and password != psword:
                 print("The details you entered is incorrect.")
+                exit("Goodbye............................")
                 break
 
 
