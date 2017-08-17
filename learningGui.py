@@ -39,19 +39,37 @@ from tkinter import *
 
 #top.mainloop()
 
+def profil():
+    print('Users profil')
+
+def unitRegistration():
+    print('Register Units')
+
+def semesterResults():
+    print('Semester Results')
+
+def logout():
+    print('Loging out.....')
+
+def exit():
+    print('Exiting system.........')
+    import sys;sys.exit()
+
 top = tkinter.Tk()
+top.title("Users Dashboard")
 
-frame1 = Frame(top)
-frame1.pack(side='left',relief='RAISED')
+widget = Label(top,text='Users Dashboard',padx=5,pady=5)
+widget.pack(side=TOP)
 
-frame2 = Frame(top)
-frame2.pack(side='left')
+f = Frame(relief=RIDGE,borderwidth=5)
+widget1 = Label(f,text='User Name').pack()
+widget2 = Label(f,text='Users Role').pack()
+widget3 = Button(f,text='Profile',command=profil).pack(padx=10,pady=10)
+widget4 = Button(f,text='Unit Registration',command=unitRegistration).pack()
+widget5 = Button(f,text='Semester Results',command=semesterResults).pack(padx=10,pady=10)
+widget6 = Button(f,text='Logout',command=logout).pack()
+widget7 = Button(f,text='Exit',command=exit).pack(padx=10,pady=10)
 
-widget1 = Label(frame1,text='Profile')
-
-widget2 = Label(frame2,text='Welcome to your portal')
-
-widget1.pack()
-widget2.pack()
+f.pack(side=LEFT)
 
 top.mainloop()
